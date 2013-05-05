@@ -36,15 +36,6 @@ DATABASES = {
 ########## END DATABASE CONFIGURATION
 
 
-########## CACHE CONFIGURATION
-# See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-    }
-}
-########## END CACHE CONFIGURATION
-
 ########## OTHER APPS CONFIGURATION
 INSTALLED_APPS += (
     'django_extensions',
@@ -55,6 +46,7 @@ INSTALLED_APPS += (
 # See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
 INSTALLED_APPS += (
     'debug_toolbar',
+    'memcache_toolbar',
 )
 
 # See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
@@ -80,7 +72,7 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.sql.SQLDebugPanel',
     'debug_toolbar.panels.signals.SignalDebugPanel',
     'debug_toolbar.panels.logger.LoggingPanel',
-    # 'memcache_toolbar.panels.memcache.MemcachePanel',
+    'memcache_toolbar.panels.memcache.MemcachePanel',
 )
 
 ########## END TOOLBAR CONFIGURATION

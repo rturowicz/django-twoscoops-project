@@ -3,4 +3,5 @@
 coverage==3.6
 django-discover-runner==0.2.2
 django-debug-toolbar==0.9.4
+memcache-toolbar==0.5.2
 Sphinx==1.1.3

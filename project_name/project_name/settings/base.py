@@ -198,6 +198,21 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 ########## END APP CONFIGURATION
 
 
+########## CACHE CONFIGURATION
+# See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': [
+            '127.0.0.1:11211',
+        ],
+        'KEY_PREFIX': '{{ project_name }}.key'
+    }
+}
+CACHE_MIDDLEWARE_KEY_PREFIX = '{{ project_name }}.middleware'
+########## END CACHE CONFIGURATION
+
+
 ########## LOGGING CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#logging
 # A sample logging configuration. The only tangible logging
