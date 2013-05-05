@@ -16,3 +16,6 @@ build
 
 # Logs:
 *.log
+
+# ide project files
+.idea
