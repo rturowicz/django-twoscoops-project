@@ -12,6 +12,9 @@ urlpatterns = patterns('',
     # url(r'^$', '{{ project_name }}.views.home', name='home'),
     # url(r'^{{ project_name }}/', include('{{ project_name }}.foo.urls')),
 
+    # django-rosetta
+    url(r'^rosetta/', include('rosetta.urls')),
+
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

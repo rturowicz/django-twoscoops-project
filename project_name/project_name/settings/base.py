@@ -58,10 +58,15 @@ DATABASES = {
 
 ########## GENERAL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#time-zone
-TIME_ZONE = 'America/Los_Angeles'
+TIME_ZONE = 'Europe/Warsaw'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pl'
+
+# LANGUAGES = (
+#     ('en', _('English')),
+#     ('pl', _('Polish')),
+# )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
@@ -187,7 +192,14 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     # Database migration helpers:
     'south',
+    'rosetta',
 )
+
+LOCALE_PATHS = (
+    normpath(join(SITE_ROOT, 'locale')),
+)
+# ROSETTA_MESSAGES_SOURCE_LANGUAGE_CODE = 'pl'
+# ROSETTA_MESSAGES_SOURCE_LANGUAGE_NAME = 'Polish'
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
