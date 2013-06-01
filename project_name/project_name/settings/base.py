@@ -4,6 +4,7 @@
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
 
+_ = lambda s: s
 
 ########## PATH CONFIGURATION
 # Absolute filesystem path to the Django project directory:
@@ -63,10 +64,10 @@ TIME_ZONE = 'Europe/Warsaw'
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#language-code
 LANGUAGE_CODE = 'pl'
 
-# LANGUAGES = (
-#     ('en', _('English')),
-#     ('pl', _('Polish')),
-# )
+LANGUAGES = (
+    ('en', _('English')),
+    ('pl', _('Polish')),
+)
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#site-id
 SITE_ID = 1
