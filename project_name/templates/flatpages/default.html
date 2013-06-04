@@ -1,4 +1,4 @@
-{% extends 'flatpages/base.html' %}
+{% templatetag openblock %} extends 'flatpages/base.html' {% templatetag closeblock %}
 
-{% block title %}{{ flatpage.title }}{% endblock %}
-{% block content %}{{ flatpage.content }}{% endblock %}
+{% templatetag openblock %} block title {% templatetag closeblock %}{% templatetag openvariable %} flatpage.title {% templatetag closevariable %}{% templatetag openblock %} endblock title {% templatetag closeblock %}
+{% templatetag openblock %} block content {% templatetag closeblock %}{% templatetag openvariable %} flatpage.content {% templatetag closevariable %}{% templatetag openblock %} endblock content {% templatetag closeblock %}
