@@ -180,6 +180,7 @@ DJANGO_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
@@ -198,6 +199,7 @@ THIRD_PARTY_APPS = (
     # Database migration helpers:
     'south',
     'rosetta',
+    'commons'
 )
 
 LOCALE_PATHS = (

@@ -1,8 +1,20 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 
-# Uncomment the next two lines to enable the admin:
+from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
 from django.contrib import admin
+
+
+#info_dict = {
+#    'queryset': Entry.objects.all(),
+#    'date_field': 'pub_date',
+#}
+
+sitemaps = {
+    'flatpages': FlatPageSitemap,
+    # 'entry': GenericSitemap(info_dict, priority=0.6),
+}
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -11,6 +23,10 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', '{{ project_name }}.views.home', name='home'),
     # url(r'^{{ project_name }}/', include('{{ project_name }}.foo.urls')),
+
+    # sitemap & robots
+    url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}, 'sitemap_xml'),
+    url(r'^robots\.txt$', 'commons.views.robots', {}, 'robots_txt'),
 
     # django-rosetta
     url(r'^rosetta/', include('rosetta.urls')),
