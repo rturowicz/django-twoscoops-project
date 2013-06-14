@@ -199,6 +199,7 @@ THIRD_PARTY_APPS = (
     # Database migration helpers:
     'south',
     'rosetta',
+    'snippets',
     'commons'
 )
 
@@ -211,6 +212,9 @@ LOCALE_PATHS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
 )
+
+# snippets default content
+SNIPPET_STRING_IF_INVALID = 'undefined snippet'
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
