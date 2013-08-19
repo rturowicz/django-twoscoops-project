@@ -3,5 +3,11 @@
 coverage==3.6
 django-discover-runner==0.2.2
 django-debug-toolbar==0.9.4
-memcache-toolbar==0.5.2
+git+git://github.com/colinhowe/memcache-debug-panel.git
+git+git://github.com/rturowicz/django-debug-toolbar-user-panel.git
 Sphinx==1.1.3
+git+git://github.com/dcramer/django-devserver#egg=django-devserver
+sqlparse
+werkzeug
+guppy
+line_profiler

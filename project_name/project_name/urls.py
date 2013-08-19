@@ -17,7 +17,11 @@ sitemaps = {
 
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
+    # debug-toolbar-user-panel
+    url(r'', include('debug_toolbar_user_panel.urls')),
+
     url(r'^$', TemplateView.as_view(template_name='base.html')),
 
     # Examples:

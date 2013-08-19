@@ -47,6 +47,7 @@ INSTALLED_APPS += (
 INSTALLED_APPS += (
     'debug_toolbar',
     'memcache_toolbar',
+    'debug_toolbar_user_panel'
 )
 
 # See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
@@ -60,10 +61,12 @@ MIDDLEWARE_CLASSES += (
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
     'SHOW_TEMPLATE_CONTEXT': True,
+    'MEDIA_URL': MEDIA_URL,
 }
 
 DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.version.VersionDebugPanel',
+    'debug_toolbar_user_panel.panels.UserPanel',
     'debug_toolbar.panels.timer.TimerDebugPanel',
     'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
     'debug_toolbar.panels.headers.HeaderDebugPanel',
@@ -76,3 +79,29 @@ DEBUG_TOOLBAR_PANELS = (
 )
 
 ########## END TOOLBAR CONFIGURATION
+
+########## DEVSERVER CONFIGURATION
+# see: https://github.com/dcramer/django-devserver
+
+INSTALLED_APPS += (
+    'devserver',
+)
+
+DEVSERVER_MODULES = (
+    # 'devserver.modules.sql.SQLRealTimeModule',
+    # 'devserver.modules.sql.SQLSummaryModule',
+    # 'devserver.modules.profile.ProfileSummaryModule',
+    #
+    # 'devserver.modules.ajax.AjaxDumpModule',
+    # 'devserver.modules.profile.MemoryUseModule',
+    # 'devserver.modules.cache.CacheSummaryModule',
+    # 'devserver.modules.profile.LineProfilerModule',
+)
+
+DEVSERVER_TRUNCATE_SQL = False
+
+#DEVSERVER_FILTER_SQL = (
+#        re.compile('djkombu_\w+'),  # Filter all queries related to Celery
+#)
+
+########## DEVSERVER CONFIGURATION
