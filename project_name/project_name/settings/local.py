@@ -55,7 +55,8 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 # See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
 MIDDLEWARE_CLASSES += (
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'commons.profile_middleware.ProfilerMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
 )
 
 DEBUG_TOOLBAR_CONFIG = {
@@ -88,6 +89,7 @@ INSTALLED_APPS += (
 )
 
 DEVSERVER_MODULES = (
+    'commons.devserver_modules.RequestModule',
     # 'devserver.modules.sql.SQLRealTimeModule',
     # 'devserver.modules.sql.SQLSummaryModule',
     # 'devserver.modules.profile.ProfileSummaryModule',
