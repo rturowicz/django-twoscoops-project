@@ -10,4 +10,4 @@ git+git://github.com/dcramer/django-devserver#egg=django-devserver
 sqlparse
 werkzeug
 guppy
-line_profiler
+line_profiler==1.0b3
