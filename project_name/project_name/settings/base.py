@@ -246,17 +246,30 @@ CACHE_MIDDLEWARE_KEY_PREFIX = '{{ project_name }}.middleware'
 
 ########## LOGGING CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#logging
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
+# A sample logging configuration.
+# Logging performed by this configuration is:
+# - to send an email to the site admins on every HTTP 500 error when DEBUG=False
+# - log to console when DEBUG=True
+# - log to file
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
+        },
+        'require_debug_true': {
+            '()': 'commons.log.RequireDebugTrue'
         }
     },
     'handlers': {
@@ -264,13 +277,34 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'verbose',
+            'filename': 'logs/app.log'
         }
     },
     'loggers': {
         'django.request': {
             'handlers': ['mail_admins'],
+            'filters': ['require_debug_false'],
             'level': 'ERROR',
             'propagate': True,
+        },
+        'console_logger': {
+            'handlers': ['console'],
+            'filters': ['require_debug_true'],
+            'level': 'DEBUG',
+        },
+        'file_logger': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
         },
     }
 }
