@@ -208,6 +208,7 @@ THIRD_PARTY_APPS = (
     'south',
     'rosetta',
     'snippets',
+    'profiles',
     'commons'
 )
 
@@ -315,3 +316,7 @@ LOGGING = {
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 ########## END WSGI CONFIGURATION
+
+########## CUSTOM USER MODEL CONFIGURATION
+AUTH_USER_MODEL = 'profiles.AppUser'
+########## END CUSTOM USER MODEL CONFIGURATION
