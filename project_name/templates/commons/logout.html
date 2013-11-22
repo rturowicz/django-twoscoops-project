@@ -1,0 +1,7 @@
+{% templatetag openblock %} extends 'base.html' {% templatetag closeblock %}
+
+{% templatetag openblock %} block content {% templatetag closeblock %}
+    Logged out!<br />
+    <a href="/" title="Main page">Main page</a><br />
+    <a href="{% templatetag openblock %} url 'login_view' {% templatetag closeblock %}" title="Login again">Login again</a>
+{% templatetag openblock %} endblock {% templatetag closeblock %}

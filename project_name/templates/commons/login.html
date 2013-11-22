@@ -1,0 +1,14 @@
+{% templatetag openblock %} extends 'base.html' {% templatetag closeblock %}
+
+{% templatetag openblock %} block content {% templatetag closeblock %}
+    <form action="{% templatetag openblock %} url 'login_view' {% templatetag closeblock %}" method="post" id="login">
+        {% templatetag openblock %} csrf_token {% templatetag closeblock %}
+        <label for="id_username_mid">E-mail:</label>&nbsp;<input type="text" id="id_username_mid" name="username" value="{% templatetag openblock %} if form.username.data {% templatetag closeblock %}{% templatetag openvariable %} form.username.data {% templatetag closevariable %}{% templatetag openblock %} endif {% templatetag closeblock %}" /><br />
+        <label for="id_password_mid">Password:</label>&nbsp;<input type="password" id="id_password_mid" name="password" />
+        <input type="hidden" name="next" value="/" /><input type="submit" value="Login" /><br />
+        <a href="{% templatetag openblock %} url 'password_reset_view' {% templatetag closeblock %}">Password reset</a>
+        <span>{% templatetag openblock %} if form.errors {% templatetag closeblock %}{% templatetag openvariable %}form.username.errors{% templatetag closevariable %} {% templatetag openvariable %}form.password.errors{% templatetag closevariable %} {% templatetag openvariable %}form.non_field_errors{% templatetag closevariable %}{% templatetag openblock %} endif {% templatetag closeblock %}</span>
+    </form>
+{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openvariable %}

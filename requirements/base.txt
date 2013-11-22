@@ -8,3 +8,4 @@ logutils==0.3.3
 South==0.8.1
 django-snippets
 django-rosetta
+django-ratelimit

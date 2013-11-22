@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
 from django.contrib import admin
 
+from commons import urls_account
 
 #info_dict = {
 #    'queryset': Entry.objects.all(),
@@ -27,6 +28,9 @@ urlpatterns = patterns(
     # Examples:
     # url(r'^$', '{{ project_name }}.views.home', name='home'),
     # url(r'^{{ project_name }}/', include('{{ project_name }}.foo.urls')),
+
+    # profiles (login, logout, etc.)
+    url(r'^accounts/', include(urls_account)),
 
     # sitemap & robots
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}, 'sitemap_xml'),
