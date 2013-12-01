@@ -9,3 +9,5 @@ South==0.8.1
 django-snippets
 django-rosetta
 django-ratelimit
+pillow
+sorl-thumbnail
