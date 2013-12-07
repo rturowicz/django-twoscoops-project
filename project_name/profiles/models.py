@@ -5,6 +5,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.core.mail import send_mail
+from django.utils import timezone
 
 from sorl.thumbnail import ImageField, get_thumbnail
 from hashlib import md5
@@ -13,7 +15,7 @@ from .managers import AppUserManager
 
 
 USERNAME_FIELD = 'email'
-REQUIRED_FIELDS = ['name', ]
+REQUIRED_FIELDS = ['username', ]
 
 
 def generate_filename(instance, old_filename):
@@ -31,7 +33,7 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
         unique=True,
         db_index=True
     )
-    name = models.CharField(max_length=255)
+    username = models.CharField(max_length=255)
 
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(
@@ -42,6 +44,8 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
         _('active'), default=True,
         help_text=_('Designates whether this user should be treated as '
                     'active. Unselect this instead of deleting accounts.'))
+    date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
+
     image = ImageField(
         verbose_name=u'Avatar',
         blank=True, null=True,
@@ -53,14 +57,17 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 
     objects = AppUserManager()
 
+    def email_user(self, subject, message, from_email=None):
+        send_mail(subject, message, from_email, [self.email])
+
     def get_full_name(self):
-        return self.name
+        return self.username
 
     def get_short_name(self):
-        return self.name
+        return self.username
 
     def __unicode__(self):
-        return '%s - %s' % (self.email, self.name)
+        return '%s - %s' % (self.email, self.username)
 
     def avatar_thumb(self):
         if self.image:

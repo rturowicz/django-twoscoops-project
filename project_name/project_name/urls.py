@@ -6,6 +6,7 @@ from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
 from django.contrib import admin
 
 from commons import urls_account
+from profiles import urls_registration
 
 #info_dict = {
 #    'queryset': Entry.objects.all(),
@@ -32,6 +33,12 @@ urlpatterns = patterns(
 
     # profiles (login, logout, etc.)
     url(r'^accounts/', include(urls_account)),
+
+    # simple captcha
+    url(r'^captcha/', include('captcha.urls')),
+
+    # account registration and confirmation
+    url(r'^registration/', include(urls_registration)),
 
     # profile
     url(r'^profiles/', include('profiles.urls')),

@@ -2,16 +2,22 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
+from captcha.fields import CaptchaField
+
 from .models import AppUser
 
 
 class AppUserCreationForm(forms.ModelForm):
+    error_messages = {
+        'duplicate_username': _("A user with that email already exists."),
+        'password_mismatch': _("The two password fields didn't match."),
+    }
     password1 = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
     password2 = forms.CharField(label=_("Password confirmation"), widget=forms.PasswordInput)
 
     class Meta:
         model = AppUser
-        fields = ('email', 'name')
+        fields = ('email', 'username')
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -28,6 +34,10 @@ class AppUserCreationForm(forms.ModelForm):
             user.save()
 
         return user
+
+
+class AppUserRegisterationForm(AppUserCreationForm):
+    captcha = CaptchaField()
 
 
 class AppUserChangeForm(forms.ModelForm):

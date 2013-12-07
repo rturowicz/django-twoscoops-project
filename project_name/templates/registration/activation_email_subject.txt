@@ -1,0 +1,1 @@
+{% templatetag openvariable %} site {% templatetag closevariable %} - {% templatetag openvariable %} activation_key {% templatetag closevariable %} - {% templatetag openvariable %} expiration_days {% templatetag closevariable %}

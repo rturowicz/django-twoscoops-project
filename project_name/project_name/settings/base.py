@@ -115,7 +115,7 @@ STATICFILES_FINDERS = (
 ########## SECRET CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 # Note: This key should only be used for development and testing.
-SECRET_KEY = r"{{ secret_key }}"
+SECRET_KEY = r"vx4=3!iiz8r3dv_9s%lno@a1q9qhv)l_v(@fx%@wbd2xv2n$1y"
 ########## END SECRET CONFIGURATION
 
 
@@ -209,6 +209,8 @@ THIRD_PARTY_APPS = (
     'south',
     'rosetta',
     'snippets',
+    'captcha',
+    'registration',
     'profiles',
     'commons'
 )
@@ -216,8 +218,23 @@ THIRD_PARTY_APPS = (
 LOCALE_PATHS = (
     normpath(join(SITE_ROOT, 'locale')),
 )
+
 # ROSETTA_MESSAGES_SOURCE_LANGUAGE_CODE = 'pl'
 # ROSETTA_MESSAGES_SOURCE_LANGUAGE_NAME = 'Polish'
+
+# registration settings
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_OPEN = True
+
+# captcha settings
+CAPTCHA_NOISE_FUNCTIONS = (
+    #'captcha.helpers.noise_arcs',
+    #'captcha.helpers.noise_dots',
+)
+CAPTCHA_FONT_SIZE = 32
+CAPTCHA_LETTER_ROTATION = (-10, 10)
+#CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
@@ -239,10 +256,10 @@ CACHES = {
         'LOCATION': [
             '127.0.0.1:11211',
         ],
-        'KEY_PREFIX': '{{ project_name }}.key'
+        'KEY_PREFIX': 'django_template_15.key'
     }
 }
-CACHE_MIDDLEWARE_KEY_PREFIX = '{{ project_name }}.middleware'
+CACHE_MIDDLEWARE_KEY_PREFIX = 'django_template_15.middleware'
 ########## END CACHE CONFIGURATION
 
 

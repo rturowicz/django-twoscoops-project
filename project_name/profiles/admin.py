@@ -11,9 +11,9 @@ class AppUserAdmin(AdminImageMixin, UserAdmin):
     add_form = AppUserCreationForm
     form = AppUserChangeForm
 
-    list_display = ('email', 'is_staff', 'name', 'avatar_thumb')
+    list_display = ('email', 'is_staff', 'username', 'avatar_thumb')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
-    search_fields = ('email', 'name')
+    search_fields = ('email', 'username')
     ordering = ('email', )
     filter_horizontal = ('groups', 'user_permissions')
 
@@ -22,7 +22,7 @@ class AppUserAdmin(AdminImageMixin, UserAdmin):
             'fields': ('email', 'password')
         }),
         ('Personal info', {
-            'fields': ('name', 'image')
+            'fields': ('username', 'image')
         }),
         ('Permissions', {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')
@@ -35,7 +35,7 @@ class AppUserAdmin(AdminImageMixin, UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide', ),
-            'fields': ('email', 'name', 'password1', 'password2')
+            'fields': ('email', 'username', 'password1', 'password2')
         }),
     )
 

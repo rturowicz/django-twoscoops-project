@@ -1,0 +1,3 @@
+activation key: {% templatetag openblock %} url 'registration_activate' activation_key {% templatetag closeblock %}
+expiration days: {% templatetag openvariable %} expiration_days {% templatetag closevariable %}
+site: {% templatetag openvariable %} site {% templatetag closevariable %}

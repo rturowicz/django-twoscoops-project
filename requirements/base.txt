@@ -6,8 +6,10 @@ django-extensions==1.1.1
 python-memcached==1.48
 logutils==0.3.3
 South==0.8.1
-django-snippets
-django-rosetta
-django-ratelimit
-pillow
-sorl-thumbnail
+django-snippets==0.1.2
+django-rosetta==0.7.2
+django-ratelimit==0.2
+Pillow==2.2.1
+django-ratelimit==0.2
+https://bitbucket.org/ubernostrum/django-registration/get/tip.zip
+git+git://github.com/rturowicz/django-simple-captcha.git
