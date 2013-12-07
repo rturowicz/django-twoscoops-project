@@ -8,6 +8,8 @@ from django.conf import settings
 from django.core.mail import send_mail
 from django.utils import timezone
 
+from registration.signals import user_activated, user_registered
+
 from sorl.thumbnail import ImageField, get_thumbnail
 from hashlib import md5
 
@@ -78,3 +80,17 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 
     avatar_thumb.short_description = 'Avatar'
     avatar_thumb.allow_tags = True
+
+
+def user_activated_handler(sender, user, request, **kwargs):
+    # do something after account activation
+    pass
+
+user_activated.connect(user_activated_handler, sender=None)
+
+
+def user_registered_handler(sender, user, request, **kwargs):
+    # do something after account registration
+    pass
+
+user_registered.connect(user_registered_handler, sender=None)
