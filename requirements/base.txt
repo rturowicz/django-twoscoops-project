@@ -1,4 +1,4 @@
-Django==1.5.1
+Django==1.5.5
 bpython==0.12
 django-braces==1.2.2
 django-model-utils==1.4.0
@@ -8,8 +8,7 @@ logutils==0.3.3
 South==0.8.1
 django-snippets==0.1.2
 django-rosetta==0.7.2
-django-ratelimit==0.2
-Pillow==2.2.1
-django-ratelimit==0.2
+django-ratelimit==0.4
+Pillow==2.3.0
 https://bitbucket.org/ubernostrum/django-registration/get/tip.zip
 git+git://github.com/rturowicz/django-simple-captcha.git

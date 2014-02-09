@@ -210,9 +210,7 @@ THIRD_PARTY_APPS = (
     'rosetta',
     'snippets',
     'captcha',
-    'registration',
-    'profiles',
-    'commons'
+    'registration'
 )
 
 LOCALE_PATHS = (
@@ -238,6 +236,8 @@ CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'profiles',
+    'commons'
 )
 
 # snippets default content

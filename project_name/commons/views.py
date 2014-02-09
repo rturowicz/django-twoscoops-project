@@ -6,7 +6,6 @@ from django.views.decorators.debug import sensitive_post_parameters
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import login as django_login, logout as django_logout
 from django.http import HttpResponseRedirect
-from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 from django.contrib.auth.views import password_reset as django_password_reset
 from django.contrib.auth.views import password_reset_done as django_password_reset_done
@@ -16,7 +15,7 @@ from django.contrib.auth.views import password_change as django_password_change
 from django.contrib.auth.views import password_change_done as django_password_change_done
 from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 
-from ratelimit.decorators import ratelimit, clear
+from ratelimit.decorators import ratelimit
 
 
 @never_cache
@@ -32,18 +31,13 @@ def robots(request):
 @never_cache
 @ratelimit(
     field='username', ip=False, rate='2/m', method="POST",
-    block=True, error_message=_('Too many invalid login attempts. Please try again later')
+    block=True
 )
 def login(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/')
     else:
-        ret = django_login(request, template_name='commons/login.html')
-        if request.user.is_authenticated():
-            # clear rate limiting after successful login
-            clear(request, ip=False, field='username')
-
-        return ret
+        return django_login(request, template_name='commons/login.html')
 
 
 def logout(request):
