@@ -210,7 +210,8 @@ THIRD_PARTY_APPS = (
     'rosetta',
     'snippets',
     'captcha',
-    'registration'
+    'registration',
+    'django_mailer'
 )
 
 LOCALE_PATHS = (

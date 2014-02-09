@@ -12,3 +12,4 @@ django-ratelimit==0.4
 Pillow==2.3.0
 https://bitbucket.org/ubernostrum/django-registration/get/tip.zip
 git+git://github.com/rturowicz/django-simple-captcha.git
+git+http://github.com/SmileyChris/django-mailer-2.git#egg=django-mailer-2
