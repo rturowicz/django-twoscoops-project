@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
 from django.conf import settings
+
 from django.views.generic import TemplateView
 
 from django.contrib.sitemaps import FlatPageSitemap, GenericSitemap
@@ -22,9 +24,6 @@ admin.autodiscover()
 
 urlpatterns = patterns(
     '',
-    # debug-toolbar-user-panel
-    url(r'', include('debug_toolbar_user_panel.urls')),
-
     url(r'^$', TemplateView.as_view(template_name='base.html')),
 
     # Examples:
@@ -58,10 +57,12 @@ urlpatterns = patterns(
 )
 
 if settings.DEBUG:
+    import debug_toolbar
     urlpatterns += patterns(
         '',
         #url(r'^testing/', include('testing.urls')),
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT,
-        }),
+        url(r'^__debug__/', include(debug_toolbar.urls)),
     )
+
+    # Uncomment the next line to serve media files in dev.
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

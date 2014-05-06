@@ -45,17 +45,13 @@ INSTALLED_APPS += (
 ########## END OTHER APPS CONFIGURATION
 
 ########## TOOLBAR CONFIGURATION
-# See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
+# See: http://django-debug-toolbar.readthedocs.org/en/latest/installation.html#explicit-setup
 INSTALLED_APPS += (
     'debug_toolbar',
     'memcache_toolbar',
     'debug_toolbar_user_panel'
 )
 
-# See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
-INTERNAL_IPS = ('127.0.0.1',)
-
-# See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
 MIDDLEWARE_CLASSES += (
     'commons.profile_middleware.ProfilerMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware'
@@ -81,6 +77,11 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.logger.LoggingPanel',
     'memcache_toolbar.panels.memcache.MemcachePanel',
 )
+
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
+# http://django-debug-toolbar.readthedocs.org/en/latest/installation.html
+INTERNAL_IPS = ('127.0.0.1',)
 
 ########## END TOOLBAR CONFIGURATION
 

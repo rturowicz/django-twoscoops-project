@@ -4,10 +4,6 @@
 # Packaging files:
 *.egg*
 
-# Editor temp files:
-*.swp
-*~
-
 # Sphinx docs:
 build
 
@@ -17,8 +13,33 @@ build
 # Logs:
 *.log
 
-# ide project files
+# pycharm
 .idea
 
 # media dir
 media
+
+# Eclipse
+.project
+.pydevproject
+.settings
+
+# Linux Editors
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+.\#*
+*.swp
+*.swo
+
+# Mac
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+Desktop.ini
